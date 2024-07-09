@@ -33,7 +33,7 @@ posts_data = []
 # Retrieve the latest 500 posts
 count = 0
 for post in profile.get_posts():
-    if count == 100:
+    if count == 2:
         break
     # Clean the caption by removing unwanted characters and newlines
     cleaned_caption = re.sub(r'\s+', ' ', post.caption.replace('â£', ' '))
@@ -46,11 +46,11 @@ for post in profile.get_posts():
     time.sleep(2)  # Adjust the delay time as needed
 
 # Write data to CSV
-with open('bank_indonesia_posts.csv', 'w', newline='', encoding='utf-8') as file:
+with open(f'data_{target}.csv', 'w', newline='', encoding='utf-8') as file:
     writer = csv.writer(file)
     # Write the header
     writer.writerow(['Shortcode', 'Caption', 'Likes'])
     # Write the rows
     writer.writerows(posts_data)
 
-print("Data has been written to bank_indonesia_posts.csv")
+print(f'data_{target}.csv has been written')
